@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CORS</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<h1>当前网页来自localhost:7070/index.html</h1>
+
+<h3>页面加载时自动发送GET请求: http://localhost:8080/avatar.png</h3>
+<img src="http://localhost:8080/avatar.png" width="100" height="100"><br><br>
+
+<h3>点击发送GET请求: http://localhost:8080/getUser/1</h3>
+<input type="text" id="result">
+<input type="button" onclick="onButtonClick()" value="get_button">
+
+</body>
+
+<script>
+    function onButtonClick() {
+        $.get('http://localhost:8080/getUser/1', function (data) {
+            console.log("data", data);
+        });
+    }
+</script>
+
+</html>
