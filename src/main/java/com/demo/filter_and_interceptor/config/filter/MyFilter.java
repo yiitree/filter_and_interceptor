@@ -1,5 +1,11 @@
 package com.demo.filter_and_interceptor.config.filter;
 
+
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONUtil;
+import com.demo.filter_and_interceptor.config.domian.User;
+
+import javax.servlet.FilterConfig;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +15,7 @@ import java.io.IOException;
 //@Order(1)
 public class MyFilter implements Filter {
 
-//    @Override
+    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("过滤器---初始化1");
     }
@@ -18,19 +24,18 @@ public class MyFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        String uri = request.getRequestURI();
-        String method = request.getMethod();
-        System.out.println(uri + method);
-        System.out.println("过滤器---过滤器1");
-        //执行下一个filter
+        System.out.println("过滤器---执行1");
+        response.setHeader("content-type", "text/html;charset=utf-8");
+        User user = new User();
+        user.setName("bravo");
+        user.setAge(18);
+        user.setAddress("wenzhou");
+        JSON json = JSONUtil.parse(user);
+        response.getWriter().print(json.toString());
 
-        filterChain.doFilter(servletRequest, servletResponse);
-//        if(true){
-//            // 放行，交给下一个过滤器
-//
-//        }else {
-//            response.sendRedirect("/getUser/1");
-//        }
+
+        //执行下一个filter
+//        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
