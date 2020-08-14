@@ -4,6 +4,10 @@ import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
 
+/**
+ * ServletRequestListener 监听一次请求范围
+ *
+ */
 @WebListener
 public class MyListener implements ServletRequestListener {
 
