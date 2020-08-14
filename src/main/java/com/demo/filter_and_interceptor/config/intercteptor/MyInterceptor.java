@@ -15,8 +15,6 @@ public class MyInterceptor implements HandlerInterceptor {
         System.out.println("拦截器---方法之前");
         //返回ture表示放行
         return true;
-
-//        return false;
     }
 
     @Override

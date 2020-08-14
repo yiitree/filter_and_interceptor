@@ -3,7 +3,6 @@ package com.demo.filter_and_interceptor.config.intercteptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -13,8 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebApplicationConfig implements WebMvcConfigurer {
 
+    /**
+     * 注意为HandlerInterceptor，而不是自定义的拦截器
+     */
     @Autowired
-    private HandlerInterceptor myInterceptor;
+    private MyInterceptor myInterceptor;
 
     //定义一个开放api
     String openUrl = "";

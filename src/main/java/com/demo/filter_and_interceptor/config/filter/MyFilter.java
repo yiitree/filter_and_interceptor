@@ -1,10 +1,6 @@
 package com.demo.filter_and_interceptor.config.filter;
 
 
-import cn.hutool.json.JSON;
-import cn.hutool.json.JSONUtil;
-import com.demo.filter_and_interceptor.config.domian.User;
-
 import javax.servlet.FilterConfig;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -25,17 +21,15 @@ public class MyFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         System.out.println("过滤器---执行1");
-        response.setHeader("content-type", "text/html;charset=utf-8");
-        User user = new User();
-        user.setName("bravo");
-        user.setAge(18);
-        user.setAddress("wenzhou");
-        JSON json = JSONUtil.parse(user);
-        response.getWriter().print(json.toString());
-
-
+//        response.setHeader("content-type", "text/html;charset=utf-8");
+//        User user = new User();
+//        user.setName("bravo");
+//        user.setAge(18);
+//        user.setAddress("wenzhou");
+//        JSON json = JSONUtil.parse(user);
+//        response.getWriter().print(json.toString());
         //执行下一个filter
-//        filterChain.doFilter(servletRequest, servletResponse);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
