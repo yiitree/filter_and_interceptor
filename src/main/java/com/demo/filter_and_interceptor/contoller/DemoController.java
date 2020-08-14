@@ -14,6 +14,7 @@ public class DemoController {
 
     @GetMapping("/1")
     public String demo(){
+        System.out.println("到方法里了。。。");
         return "hhh112";
     }
 

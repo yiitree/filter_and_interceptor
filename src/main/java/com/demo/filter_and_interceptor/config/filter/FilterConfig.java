@@ -12,7 +12,7 @@ public class FilterConfig {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new MyFilter());
         registrationBean.setName("myFilter");
-        registrationBean.addUrlPatterns("/**");
+        registrationBean.addUrlPatterns("/*");//注意，一定为一个/*，而不是/**
         registrationBean.setOrder(1);
         return registrationBean;
     }
@@ -22,7 +22,7 @@ public class FilterConfig {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new MyFilter2());
         registrationBean.setName("myFilter2");
-        registrationBean.addUrlPatterns("/**");
+        registrationBean.addUrlPatterns("/*");
         registrationBean.setOrder(2);
         return registrationBean;
     }
